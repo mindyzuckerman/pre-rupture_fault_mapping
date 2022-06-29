@@ -1,10 +1,9 @@
 
 file_path_FCR = 'C://Users/mindy/Documents/SU22/PFDHA/Repeat_proj/Students/'
-fn_list = [['Nutt/Nutt_BP_FCR.shp']
+fn_list = ['Nutt/Nutt_BP_FCR.shp']
 #,['Leuchter/Leuchter_BP_FCR.shp'],['Gonzales/Gonzales_BP_FCR.shp']]
-#i=1
-fn = ['file_path_FCR' + 'fn_list']
-#[i]
+i=1
+fn = 'file_path_FCR' + 'fn_list'[i]
 layer = iface.addVectorLayer(fn, '', 'ogr')
 
 #paste student's line after "student_info =" to change attributes
