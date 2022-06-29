@@ -1,0 +1,55 @@
+
+file_path_FCR = 'C://Users/mindy/Documents/SU22/PFDHA/Repeat_proj/Students/'
+fn_list = [['Nutt/Nutt_BP_FCR.shp']
+#,['Leuchter/Leuchter_BP_FCR.shp'],['Gonzales/Gonzales_BP_FCR.shp']]
+#i=1
+fn = ['file_path_FCR' + 'fn_list']
+#[i]
+layer = iface.addVectorLayer(fn, '', 'ogr')
+
+#paste student's line after "student_info =" to change attributes
+#make sure identifier matches with file name
+#Field values: Location, student number, level, project number, fault experience, map grade
+student_info = ['BP', 1, 'Grad', 2, 'No', 0]
+#, ['BP', 2, 'Grad', 2, 'No', 0]]
+#    ['BP', 3, 'Undergrad', 1, 'No', 0]
+#    ['BP', 4, 'PostDoc', 2, 'No', 0]
+#    ['BP', 5, 'PostDoc', 1, 'Yes', 0]
+#    ['BP', 6, 'Grad', 2, 'No', 0]
+#    ['BP', 7, 'Grad', 1, 'No', 0]
+#    ['BP', 8, 'Grad', 1, 'No', 0]
+#    ['BP', 10, 'Undergrad', 2, 'No', 0]
+#    ['BP', 11, 'Grad', 1, 'No', 0]
+#    ['BP', 12, 'Grad', 1, 'No', 0]
+#    ['BP', 13, 'Undergrad', 2, 'No', 0]
+#    ['BP', 14, 'Grad', 2, 'No', 0]
+#    ['BP', 15, 'Grad', 1, 'No', 0]
+#    ['BP', 16, 'Grad', 1, 'No', 0]
+#    ['BP', 19, 'Grad', 1, 'No', 0]
+#    ['BP', 20, 'Undergrad', 1, 'No', 0]
+#    ['BP', 21, 'Grad', 1, 'No', 0]
+
+#Exp: 1: SSAF, 4: Central Asia, Ridgecrest, 5: Ridge, Asia, SSAF, Familiar: Id
+#15: RC, 19: Mexico,
+#Elaine?
+
+pv = layer.dataProvider()
+pv.addAttributes([QgsField('Location', QVariant.String),
+                  QgsField('Student', QVariant.Int),
+                  QgsField('Level', QVariant.String),
+                  QgsField('Proj_Num', QVariant.Int),
+                  QgsField('Fault_Exp', QVariant.String),
+                  QgsField('Grade', QVariant.Int)])
+layer.updateFields()
+
+with edit(layer):
+    for f in layer.getFeatures():
+        f['Location'] = student_info[0]
+        f['Student'] = student_info[1]
+        f['Level'] = student_info[2]
+        f['Proj_Num'] = student_info[3]
+        f['Fault_Exp'] = student_info[4]
+        f['Grade'] = student_info[5]
+        layer.updateFeature(f)
+
+iface.showAttributeTable(layer)
