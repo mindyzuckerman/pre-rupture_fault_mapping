@@ -1,7 +1,7 @@
-#This script creates fields and fills in attributes in a folder of point
+#Function 1 creates fields and fills in attributes in a folder of point
 #shapefiles of GIR features in one mapping area.
 
-#Code iterates through shapefiles in the folder and adds the fields.
+#Function 2 iterates through shapefiles in the folder and adds the fields.
 #Code also selects each shapefile from the folder and fills the fields
 #with data given in student_info
 
@@ -12,7 +12,8 @@ import numpy
 
 folder = r'C:\Users\...filepath.to.folder.with.files'
 
-#info needed for function 2
+#Attributes that will be fill in fields
+#Fields are location, student ID number, student level, project number, location experience, map grade
 student_info = [['EMC', 1, 'Grad', 2, 'No', 0],
     ['EMC', 2, 'Grad', 2, 'No', 0],
     ['EMC', 3, 'Undergrad', 1, 'No', 0],
@@ -35,11 +36,13 @@ student_info = [['EMC', 1, 'Grad', 2, 'No', 0],
 
 stud_len = (len(student_info)) #returns the number of items
 
+#numbers match student ID numbers in shp file name
 file_list = [21,20,16,15,14,13,12,11,10,8,7,6,5,4,3,2,1]
 count = stud_len-1;
 
+##Function 1##
 for file_num in file_list:
-    path = folder+'\\'+str(file_num)+"_EMC_GIR.shp"
+    path = folder+'\\'+str(file_num)+"_EMC_GIR.shp" #change file name to match yours
 #    shp_paths.append(path)
 ## use next line to edit shapefile without adding to map
 #    layer = QgsVectorLayer(path,'',"ogr")
@@ -54,7 +57,8 @@ for file_num in file_list:
             QgsField('Fault_Exp', QVariant.String),
             QgsField('Grade', QVariant.Int)])
     layer.updateFields()
-    
+
+##Function 2##
     student_row = student_info[count]
     count = count-1;
     with edit(layer):
