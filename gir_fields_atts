@@ -1,18 +1,18 @@
 #This script creates fields and fills in attributes in a folder of point
-#shapefiles of GIR features in the EMC mapping area.
+#shapefiles of GIR features in one mapping area.
 
-#Function 1 iterates through shapefiles in the folder and adds the fields.
-#It also creates a list of paths to each shapefile which will be an input
-#for function 2.
+#Code iterates through shapefiles in the folder and adds the fields.
+#Code also selects each shapefile from the folder and fills the fields
+#with data given in student_info
 
-#Function 2 selectes each shapefile from the folder and fills the fields
-#created in Function 1 with data given in student_info
+#Use only one folder per location with all student shp files.
 
 import os
 import numpy
 
-folder = r'C:\Users\mindy\Documents\SU22\PFDHA\Repeat_proj\GIR\EMC'
+folder = r'C:\Users\...filepath.to.folder.with.files'
 
+#info needed for function 2
 student_info = [['EMC', 1, 'Grad', 2, 'No', 0],
     ['EMC', 2, 'Grad', 2, 'No', 0],
     ['EMC', 3, 'Undergrad', 1, 'No', 0],
@@ -39,14 +39,13 @@ file_list = [21,20,16,15,14,13,12,11,10,8,7,6,5,4,3,2,1]
 count = stud_len-1;
 
 for file_num in file_list:
-   
     path = folder+'\\'+str(file_num)+"_EMC_GIR.shp"
 #    shp_paths.append(path)
-    #use next line to edit shapefile without adding to map
-#   layer = QgsVectorLayer(path,'',"ogr")
-    #use next line to edit shapefile AND add to map
+## use next line to edit shapefile without adding to map
+#    layer = QgsVectorLayer(path,'',"ogr")
+## use next line to edit shapefile AND add to map
     layer = iface.addVectorLayer(path, '', 'ogr')
-#to delete attributes comment out addAttributes lines. Make sure updateFields is uncommented.
+##to delete attributes comment out addAttributes lines. Make sure updateFields is uncommented.
 #    pv = layer.dataProvider().deleteAttributes([4,5,6,7,8,9])
     pv = layer.dataProvider().addAttributes([QgsField('Location', QVariant.String),
             QgsField('Student', QVariant.Int),
