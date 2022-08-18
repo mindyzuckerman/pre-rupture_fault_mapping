@@ -6,6 +6,7 @@
 * [Technologies Used](#technologies-used)
 * [Setup](#setup)
 * [Usage](#usage)
+* [Definitions](#definitions)
 * [Project Status](#project-status)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
@@ -32,6 +33,15 @@
 - Change information in student_info to what you want to be filled into the fields
 - Shp file name begins with student ID number
 - Option to delete fields included.
+
+## Definitions
+Fields
+- Location = Mapping area
+- Student = Anonymized student ID number
+- Level = Academic level (undergraduate, graduate, postdoc)
+- Project_num = 1st or 2nd main mapping project
+- Fault_Exp = Did the student have prior knowledge of the fault?
+- Grade = Map grade (unused)
 
 
 ## Project Status
