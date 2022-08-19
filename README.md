@@ -19,6 +19,7 @@ This readme file was generated on 2022-08-17 by Mindy Zuckerman
 
 - Date of data collection: 2022-03 - 2022-06
 - CRS for all files - EPSG:4326 - WGS 84
+- Please open the Repeatability.qgz file in QGIS for quick access to all shapefiles with correct symbology.
 
 ### File List 
 
